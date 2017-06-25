@@ -1,0 +1,36 @@
+{
+  "name": "slush-feathers",
+  "version": "1.0.0",
+  "description": "A slush generator for creating feathers application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roganmelo/slush-feathers"
+  },
+  "keywords": [
+    "slushgenerator",
+    "feathers",
+    "generator"
+  ],
+  "author": "Rogan Melo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roganmelo/slush-feathers/issues"
+  },
+  "homepage": "https://github.com/roganmelo/slush-feathers#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-install": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sync": "^0.1.4",
+    "gulp-template": "^4.0.0",
+    "inquirer": "^3.1.0",
+    "lodash": "^4.17.4",
+    "require-dir": "^0.3.2",
+    "shelljs": "^0.7.8",
+    "through2": "^2.0.3"
+  }
+}
