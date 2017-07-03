@@ -5,7 +5,7 @@ module.exports = [{
   name: 'name',
   default: 'app',
   message: 'Project name',
-  validate(input) {
+  validate: input => {
     const isSelfReferential = dependencies.some(dependency => {
       const separatorIndex = dependency.indexOf('@');
       const end = separatorIndex === -1 ? dependency.length : separatorIndex;
@@ -48,11 +48,9 @@ module.exports = [{
     name: 'Realtime via Primus',
     value: 'primus'
   }],
-  validate(input) {
-    if (input.indexOf('primus') !== -1 && input.indexOf('socketio') !== -1) {
-      return 'You can only pick SocketIO or Primus, not both.';
-    }
-
-    return true;
+  validate: input => {
+    return (input.indexOf('primus') !== -1 && input.indexOf('socketio') !== -1)
+      ? 'You can only pick SocketIO or Primus, not both.'
+      : true
   }
 }];

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = function () {
+module.exports = function() {
   const app = this;
   const connectionString = app.get('<%= database %>');
   const sequelize = new Sequelize(connectionString, {

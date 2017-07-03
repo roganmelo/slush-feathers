@@ -16,7 +16,8 @@ module.exports = [{
   name: 'adapter',
   message: 'What kind of base service is it?',
   default: 'mongoose',
-  when(answers) {
+  choices: answers => adapters[answers.database],
+  when: answers => {
     if(adapters[answers.database].length === 1) {
       props.adapter = adapters[answers.database][0];
       return false;
@@ -24,13 +25,10 @@ module.exports = [{
     
     return true
   },
-  choices(answers) {
-    return adapters[answers.database];
-  }
 }, {
   name: 'name',
   message: 'What is the name of the base service?',
-  validate(input) {
+  validate: input => {
     if(input.trim() === '') return 'Base service name can not be empty';
     if(input.trim() === 'authentication') return '`authentication` is a reserved service name.';
 
@@ -40,13 +38,7 @@ module.exports = [{
   name: 'path',
   message: 'Which path should the base service be registered on?',
   default: answers => `/base/${kebabCase(answers.name)}`,
-  validate(input) {
-    if(input.trim() === '') {
-      return 'Base service path can not be empty';
-    }
-
-    return true;
-  }
+  validate: input => input.trim() === '' ? 'Base service path can not be empty' : true
 }, {
   name: 'requiresAuth',
   message: 'Does the base service require authentication?',

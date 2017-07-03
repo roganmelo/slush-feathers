@@ -19,8 +19,7 @@ gulp.paths = {
     app: `${__dirname}/templates/app`,
     base: `${__dirname}/templates/base`,
     feature: `${__dirname}/templates/feature`,
-    hook: `${__dirname}/templates/hook`,
-    platform: `${__dirname}/templates/platform`,
+    hook: `${__dirname}/templates/hook`
   }
 };
 
@@ -29,13 +28,20 @@ requireDir('tasks', { recurse: true });
 gulp.task('default', gulpSync.sync(['prompt:app', 'app', 'install:app']));
 gulp.task('base', gulpSync.sync([
   'prompt:base',
+  'register:base',
   'files:base',
   'model',
   'types',
-  'register:base',
   'test:base',
   'connection',
   'register:connection',
   'register:connection:string',
   'install:base'
+]));
+gulp.task('feature', gulpSync.sync([
+  'prompt:feature',
+  'register:feature',
+  'files:feature',
+  'test:feature',
+  'install:feature'
 ]));

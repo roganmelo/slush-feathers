@@ -1,5 +1,5 @@
 const assert = require('assert');
-const app = require('../../../src/app');
+<% if(directory) { %>const app = require('../../../../app');<% } %><% if(!directory) { %>const app = require('../../../src/app');<% } %>
 
 describe('\'<%= name %>\' service', () => {
   it('registered the service', () => {

@@ -4,9 +4,9 @@ module.exports = data => {
   return through.obj(function(file, enc, cb) {
     let lines = file.contents.toString().split('\n');
     const requiresMarkupIndex = lines.indexOf('// requires');
-    const configurationsMarkupIndex = lines.indexOf('// configurations');
-    const require = `const ${data.database} = require('./${data.database}');`;
-    const configuration = `app.configure(${data.database});`;
+    const configurationsMarkupIndex = lines.indexOf('  // configurations');
+    const require = data.directory ? `const ${data.camelName} = require('./${data.folder}/${data.kebabName}/${data.kebabName}.service.js');` : `const ${data.camelName} = require('./${data.kebabName}/${data.kebabName}.service.js');`;
+    const configuration = `  app.configure(${data.camelName});`;
 
     if(requiresMarkupIndex === -1 || configurationsMarkupIndex === -1) {
       cb();
@@ -15,7 +15,7 @@ module.exports = data => {
 
     if(lines.includes(require) || lines.includes(configuration)) {
       cb();
-      return;
+      throw new Error('Feature service with that name already registered.');
     }
 
     lines.splice(requiresMarkupIndex + 1, 0, require);

@@ -1,6 +1,6 @@
 // requires
 
-module.exports = function () {
+module.exports = function() {
   const app = this;
   // configurations
 };

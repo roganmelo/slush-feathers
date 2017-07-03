@@ -7,13 +7,11 @@ const rename = require('gulp-rename');
 const shell = require('shelljs');
 const questions = require('./questions');
 const templateOptions = { 'interpolate': /<%=([\s\S]+?)%>/g };
-const registerService = require('./register-base');
+const registerBase = require('./register-base');
 const registerConnection = require('./register-database');
 const registerConnectionString = require('./register-connection-string');
 const { adapterDependencies, databaseDependencies, connectionStrings } = require('./utils');
 let props = {};
-
-console.log(kebabCase);
 
 gulp.task('prompt:base', done => {
   return inquirer.prompt(questions)
@@ -27,6 +25,12 @@ gulp.task('prompt:base', done => {
         connectionString: connectionStrings[answers.database]
       });
     });
+});
+
+gulp.task('register:base', () => {
+  return gulp.src([`${gulp.paths.src.base}/index.js`])
+    .pipe(registerBase(props))
+    .pipe(gulp.dest(gulp.paths.src.base));
 });
 
 gulp.task('files:base', () => {
@@ -48,12 +52,6 @@ gulp.task('types', () => {
     .pipe(template(props, templateOptions))
     .pipe(rename(file => file.basename = `${props.kebabName}.service`))
     .pipe(gulp.dest(`${gulp.paths.src.base}/${props.kebabName}`));
-});
-
-gulp.task('register:base', () => {
-  return gulp.src([`${gulp.paths.src.base}/index.js`])
-    .pipe(registerService(props))
-    .pipe(gulp.dest(gulp.paths.src.base));
 });
 
 gulp.task('test:base', () => {
@@ -84,7 +82,10 @@ gulp.task('register:connection:string', () => {
 
 gulp.task('install:base', () => {
   const database = props.adapter === 'mongoose' ? 'mongoose' : props.database;
-  const dependencies1 = databaseDependencies[database] ? databaseDependencies[database] : '';
-  const dependencies2 = adapterDependencies[props.adapter] ? adapterDependencies[props.adapter] : '';
-  shell.exec(`npm install --save ${dependencies1} ${dependencies2}`);
+  const dependency1 = databaseDependencies[database] ? databaseDependencies[database] : '';
+  const dependency2 = adapterDependencies[props.adapter] ? adapterDependencies[props.adapter] : '';
+  const dependency3 = props.requiresAuth ? 'feathers-authentication' : '';
+  
+  if(dependency1 || dependency2 || dependency3)
+    shell.exec(`npm install --save ${dependency1} ${dependency2} ${dependency3}`);
 });

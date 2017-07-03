@@ -3,7 +3,7 @@ const createModel = require('./<%= kebabName %>.model');
 const hooks = require('./<%= kebabName %>.hooks');
 const filters = require('./<%= kebabName %>.filters');
 
-module.exports = function () {
+module.exports = function() {
   const app = this;
   const Model = createModel(app);
   const paginate = app.get('paginate');

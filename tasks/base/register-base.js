@@ -8,9 +8,6 @@ module.exports = data => {
     const require = `const ${data.camelName} = require('./${data.kebabName}/${data.kebabName}.service.js');`;
     const configuration = `  app.configure(${data.camelName});`;
 
-    console.log('requiresMarkupIndex', requiresMarkupIndex);
-    console.log('configurationsMarkupIndex', configurationsMarkupIndex);
-
     if(requiresMarkupIndex === -1 || configurationsMarkupIndex === -1) {
       cb();
       throw new Error('Could not find the markup. The markup is mandatory.');
@@ -24,7 +21,6 @@ module.exports = data => {
     lines.splice(requiresMarkupIndex + 1, 0, require);
     lines.splice(configurationsMarkupIndex + 2, 0, configuration);
     file.contents = new Buffer(lines.join('\n'));
-    console.log(file.contents.toString());
     this.push(file);
     cb();
   });

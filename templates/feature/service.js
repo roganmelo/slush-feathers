@@ -1,15 +1,14 @@
-const createService = require('feathers-rethinkdb');
+<% if(extend) { %>const createService = require('../../feathers-extended-service');<% } %><% if(!extend) { %>const createService = require('<%= serviceModule %>');<% } %>
 const hooks = require('./<%= kebabName %>.hooks');
 const filters = require('./<%= kebabName %>.filters');
 
 module.exports = function() {
   const app = this;
-  const Model = app.get('rethinkdbClient');
   const paginate = app.get('paginate');
 
   const options = {
-    name: '<%= snakeName %>',
-    Model,
+    name: '<%= kebabName %>',
+    <% if(extend) { %>extend: '<%= base %>',<% } %>
     paginate
   };
 

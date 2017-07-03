@@ -1,6 +1,6 @@
 const logger = require('winston');
 
-module.exports = function () {
+module.exports = function() {
   return function (hook) {
     let message = `${hook.type}: ${hook.path} - Method: ${hook.method}`;
 

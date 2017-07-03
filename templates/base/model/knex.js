@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = function(app) {
   const db = app.get('knexClient');
 
   db.schema.createTableIfNotExists('<%= kebabName %>', table => {

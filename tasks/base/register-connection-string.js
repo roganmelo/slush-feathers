@@ -17,7 +17,7 @@ module.exports = data => {
 
     if(lines.includes(connection)) {
       cb();
-      throw new Error('Connection already registered.');
+      return;
     }
 
     lines.splice(connectionsMarkupIndex + 1, 0, connection);
