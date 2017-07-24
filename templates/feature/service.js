@@ -4,12 +4,13 @@ const filters = require('./<%= kebabName %>.filters');
 
 module.exports = function() {
   const app = this;
-  const paginate = app.get('paginate');
+  <% if(!extend) { %>const paginate = app.get('paginate');<% } %>
+  
 
   const options = {
     name: '<%= kebabName %>',
-    <% if(extend) { %>extend: '<%= base %>',<% } %>
-    paginate
+    <% if(extend) { %>extend: '<%= base %>'<% } %>
+    <% if(!extend) { %>paginate<% } %>
   };
 
   app.use('/<%= path %>', createService(options));

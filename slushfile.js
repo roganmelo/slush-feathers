@@ -45,3 +45,6 @@ gulp.task('feature', gulpSync.sync([
   'test:feature',
   'install:feature'
 ]));
+gulp.task('hook', gulpSync.sync([
+  'prompt:hook'
+]));

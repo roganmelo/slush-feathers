@@ -33,7 +33,7 @@ module.exports = baseDir => [{
 }, {
   name: 'path',
   message: 'Which path should the feature service be registered on?',
-  default: answers => `/${kebabCase(answers.name)}`,
+  default: answers => answers.directory ? `/${kebabCase(answers.folder)}/${kebabCase(answers.name)}` : `/${kebabCase(answers.name)}`,
   validate: input => input.trim() === '' ? 'Feature service path can not be empty' : true
 }, {
   name: 'requiresAuth',

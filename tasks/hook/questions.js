@@ -1,6 +1,12 @@
-module.exports = [{
+const listServices = require('./list-services');
+
+module.exports = (baseDir, featuresDir) => [{
   name: 'name',
-  message: 'What is the name of the hook?'
+  message: 'What is the name of the hook?',
+  validate: input => {
+    if(input.trim() === '') return 'Hook name can not be empty';
+    return true;
+  }
 }, {
   type: 'list',
   name: 'type',
@@ -19,12 +25,10 @@ module.exports = [{
   type: 'checkbox',
   name: 'services',
   message: 'What service(s) should this hook be for (select none to add it yourself)?',
-  choices() {
-    return [{
-      name: 'Application wide (all services)',
-      value: '__app'
-    }].concat(services.map(value => ({ value })));
-  }
+  choices: [{
+    name: 'Application wide (all services)',
+    value: '__app'
+  }].concat(listServices(baseDir, featuresDir))
 }, {
   type: 'checkbox',
   name: 'methods',
@@ -44,10 +48,10 @@ module.exports = [{
   }, {
     value: 'remove'
   }],
-  when(answers) {
+  when: answers => {
     return answers.type !== null && answers.services.length;
   },
-  validate(methods) {
+  validate: methods => {
     if (methods.indexOf('all') !== -1 && methods.length !== 1) 
       return 'Select applicable methods or \'all\', not both.';
 
