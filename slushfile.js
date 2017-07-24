@@ -8,12 +8,12 @@ gulp.paths = {
   src: {
     path: './src',
     base: './src/base',
-    feature: './src/services'
+    feature: './src/features'
   },
   test: {
     path: './test',
     base: './test/base',
-    feature: './test/services'
+    feature: './test/features'
   },
   templates: {
     app: `${__dirname}/templates/app`,
