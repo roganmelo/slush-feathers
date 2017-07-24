@@ -17,7 +17,7 @@ gulp.task('prompt:feature', () => {
         path: answers.path.replace(/^(\/*)|(\/*)$/g, ''),
         folder: camelCase(answers.folder),
         kebabName: kebabCase(answers.name),
-        camelName: camelCase(answers.name),
+        camelName: camelCase(answers.directory ? answers.folder + answers.name : answers.name),
         snakeName: snakeCase(answers.name)
       });
     });
