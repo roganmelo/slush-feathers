@@ -54,6 +54,6 @@ gulp.task('test:feature', () => {
 
 gulp.task('install:feature', () => {
   const dependency1 = props.requiresAuth ? 'feathers-authentication' : '';
-  const dependency2 = props.base ? 'feathers-extended-service' : '';
-  if(dependency1 || dependency2) shell.exec(`npm install --save ${dependency1} ${dependency2}`);
+  // const dependency2 = props.base ? 'feathers-extended-service' : '';
+  if(dependency1 || dependency2) shell.exec(`npm install --save ${dependency1}`);
 });
