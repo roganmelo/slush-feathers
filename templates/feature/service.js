@@ -1,4 +1,4 @@
-<% if(extend) { %>const createService = require('../../feathers-extended-service');<% } %><% if(!extend) { %>const createService = require('<%= serviceModule %>');<% } %>
+<% if(extend) { %>const createService = require('../../../helpers/extended-service');<% } %><% if(!extend) { %>const createService = require('<%= serviceModule %>');<% } %>
 const hooks = require('./<%= kebabName %>.hooks');
 const filters = require('./<%= kebabName %>.filters');
 
