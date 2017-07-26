@@ -1,7 +1,7 @@
 const createService = require('<%= createService %>');
-const createModel = require('./<%= kebabName %>.model');
-const hooks = require('./<%= kebabName %>.hooks');
-const filters = require('./<%= kebabName %>.filters');
+const createModel   = require('./<%= kebabName %>.model');
+const hooks         = require('./<%= kebabName %>.hooks');
+const filters       = require('./<%= kebabName %>.filters');
 
 module.exports = function() {
   const app = this;
