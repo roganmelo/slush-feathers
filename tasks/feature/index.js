@@ -15,7 +15,7 @@ gulp.task('prompt:feature', () => {
       Object.assign(props, answers, {
         serviceModule: answers.directory ? `./${camelCase(answers.folder)}/${kebabCase(answers.name)}.class.js` : `./${kebabCase(answers.name)}.class.js`,
         path: answers.path.replace(/^(\/*)|(\/*)$/g, ''),
-        folder: camelCase(answers.folder),
+        folder: kebabCase(answers.folder),
         kebabName: kebabCase(answers.name),
         camelName: camelCase(answers.directory ? `${answers.folder}-${answers.name}` : answers.name),
         snakeName: snakeCase(answers.name)

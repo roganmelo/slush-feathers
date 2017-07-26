@@ -7,7 +7,7 @@ module.exports = function() {
   <% if(!extend) { %>const paginate = app.get('paginate');<% } %>
   
   const options = {
-    name: '<%= kebabName %>',
+    name: '<%= folder %>-<%= kebabName %>',
     <% if(extend) { %>extend: '<%= base %>'<% } %><% if(!extend) { %>paginate<% } %>
   };
 
