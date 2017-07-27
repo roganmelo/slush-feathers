@@ -13,7 +13,7 @@ gulp.task('prompt:feature', () => {
   return inquirer.prompt(questions(gulp.paths.src.base))
     .then(answers => {
       Object.assign(props, answers, {
-        serviceModule: answers.directory ? `./${camelCase(answers.folder)}/${kebabCase(answers.name)}.class.js` : `./${kebabCase(answers.name)}.class.js`,
+        serviceModule: answers.directory ? `./${kebabCase(answers.name)}.class.js` : `./${kebabCase(answers.name)}.class.js`,
         path: answers.path.replace(/^(\/*)|(\/*)$/g, ''),
         folder: kebabCase(answers.folder),
         kebabName: kebabCase(answers.name),
