@@ -1,6 +1,5 @@
 <% if(extend) { %>const createService = require('../../../helpers/extended-service');<% } %><% if(!extend) { %>const createService = require('<%= serviceModule %>');<% } %>
 const hooks         = require('./<%= kebabName %>.hooks');
-const filters       = require('./<%= kebabName %>.filters');
 
 module.exports = function() {
   const app = this;
@@ -16,8 +15,4 @@ module.exports = function() {
   const service = app.service('<%= path %>');
 
   service.hooks(hooks);
-
-  if (service.filter) {
-    service.filter(filters);
-  }
 };
