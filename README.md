@@ -41,13 +41,10 @@ npm start
 # short alias for generate new application
 slush feathers
 
-# set up authentication
-slush feathers:authentication
-
 # generate new base service with a model
 slush feathers:base
 
-# generate new feature service that extends a base or not
+# generate new feature service that extends a base service or not
 slush feathers:feature
 
 ## Contributing
