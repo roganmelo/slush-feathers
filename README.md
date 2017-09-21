@@ -12,6 +12,12 @@ npm install -g slush
 Then install the feathers generator.
 
 ```bash
+npm install -g slush-feathers
+```
+
+Or install both on the same time
+
+```bash
 npm install -g slush slush-feathers
 ```
 
@@ -43,13 +49,6 @@ slush feathers:base
 
 # generate new feature service that extends a base or not
 slush feathers:feature
-
-# generate new hook
-slush feathers:hook
-
-# generate new middleware
-slush feathers:middleware
-```
 
 ## Contributing
 
