@@ -45,6 +45,6 @@ class Service {
   }
 }
 
-module.exports = function(options) {
+export default function(options) {
   return new Service(options);
 }

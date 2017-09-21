@@ -1,20 +1,19 @@
-const path = require('path');
-const favicon = require('serve-favicon');
-const compress = require('compression');
-const cors = require('cors');
-const helmet = require('helmet');
-const bodyParser = require('body-parser');
-const feathers = require('feathers');
-const configuration = require('feathers-configuration');
-const hooks = require('feathers-hooks');
-// requires
-<% if (providers.includes('rest')) { %>const rest = require('feathers-rest');<% } %>
-<% if (providers.includes('socketio')) { %>const socketio = require('feathers-socketio');<% } %>
-<% if (providers.includes('primus')) { %>const primus = require('feathers-primus');<% } %>
-const middleware = require('./middleware');
-const base = require('./base');
-const services = require('./services');
-const appHooks = require('./app.hooks');
+import path from 'path';
+import favicon from 'serve-favicon';
+import compress from 'compression';
+import cors from 'cors';
+import helmet from 'helmet';
+import bodyParser from 'body-parser';
+import feathers from 'feathers';
+import configuration from 'feathers-configuration';
+import hooks from 'feathers-hooks';
+<% if (providers.includes('rest')) { %>import rest from 'feathers-rest';<% } %>
+<% if (providers.includes('socketio')) { %>import socketio from 'feathers-socketio';<% } %>
+<% if (providers.includes('primus')) { %>import primus from 'feathers-primus';<% } %>
+import middleware from './middleware';
+import base from './base';
+import features from './features';
+import appHooks from './app.hooks';
 
 const app = feathers();
 
@@ -27,13 +26,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 app.use('/', feathers.static(app.get('public')));
 app.configure(hooks());
-// configurations
 <% if (providers.includes('rest')) { %>app.configure(rest());<% } %>
 <% if (providers.includes('socketio')) { %>app.configure(socketio());<% } %>
 <% if (providers.includes('primus')) { %>app.configure(primus({ transformer: 'websockets' }));<% } %>
 app.configure(base);
-app.configure(services);
+app.configure(features);
 app.configure(middleware);
 app.hooks(appHooks);
 
-module.exports = app;
+export default app;

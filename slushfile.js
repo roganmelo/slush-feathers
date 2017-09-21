@@ -3,6 +3,7 @@ const requireDir = require('require-dir');
 const gulpSync = require('gulp-sync')(gulp);
 
 gulp.paths = {
+  hasVersionate: false,
   app: '',
   config: './config',
   src: {

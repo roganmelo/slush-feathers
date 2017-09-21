@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "es2015"
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "syntax-optional-chaining",
+    "transform-class-properties",
+    "transform-function-bind"
+  ]
+}

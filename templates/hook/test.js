@@ -1,5 +1,5 @@
-const assert = require('assert');
-const <%= camelName %> = require('../../src/hooks/<%= kebabName %>');
+import assert from 'assert';
+import <%= camelName %> from '../../src/hooks/<%= kebabName %>';
 
 describe('\'<%= name %>\' hook', () => {
   it('runs the hook', () => {

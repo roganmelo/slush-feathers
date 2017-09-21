@@ -1,5 +1,5 @@
-const assert = require('assert');
-<% if(directory) { %>const app = require('../../../../app');<% } %><% if(!directory) { %>const app = require('../../../src/app');<% } %>
+import assert from 'assert';
+<% if(directory) { %>import app from '../../../../app';<% } %><% if(!directory) { %>import app from '../../../src/app';<% } %>
 
 describe('\'<%= name %>\' service', () => {
   it('registered the service', () => {

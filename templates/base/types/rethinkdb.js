@@ -1,8 +1,8 @@
-const createService = require('feathers-rethinkdb');
-const hooks = require('./<%= kebabName %>.hooks');
-const filters = require('./<%= kebabName %>.filters');
+import createService from 'feathers-rethinkdb';
+import hooks from './<%= kebabName %>.hooks';
+import filters from './<%= kebabName %>.filters';
 
-module.exports = function() {
+export default function() {
   const app = this;
   const Model = app.get('rethinkdbClient');
   const paginate = app.get('paginate');

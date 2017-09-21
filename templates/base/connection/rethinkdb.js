@@ -1,6 +1,6 @@
-const rethinkdbdash = require('rethinkdbdash');
+import rethinkdbdash from 'rethinkdbdash';
 
-module.exports = function() {
+export default function() {
   const app = this;
   const config = app.get('rethinkdb');
   const r = rethinkdbdash(config);

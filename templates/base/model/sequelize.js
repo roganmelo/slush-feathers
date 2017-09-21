@@ -1,6 +1,6 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
-module.exports = function(app) {
+export default function(app) {
   const sequelizeClient = app.get('sequelizeClient');
   const <%= camelName %> = sequelizeClient.define('<%= kebabName %>', {
     text: {

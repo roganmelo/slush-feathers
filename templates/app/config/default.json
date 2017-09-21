@@ -2,7 +2,6 @@
   "host": "localhost",
   "port": 3030,
   "public": "../public/",
-  // connections
   "paginate": {
     "default": 10,
     "max": 50

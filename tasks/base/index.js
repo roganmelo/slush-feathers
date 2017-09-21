@@ -5,6 +5,7 @@ const _ = require('lodash');
 const template = require('gulp-template');
 const rename = require('gulp-rename');
 const shell = require('shelljs');
+
 const questions = require('./questions');
 const templateOptions = { 'interpolate': /<%=([\s\S]+?)%>/g };
 const registerBase = require('./register-base');

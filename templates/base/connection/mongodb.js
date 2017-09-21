@@ -1,6 +1,6 @@
-const MongoClient = require('mongodb').MongoClient;
+import { MongoClient } from 'mongodb';
 
-module.exports = function() {
+export default function() {
   const app = this;
   const config = app.get('mongodb');
   const promise = MongoClient.connect(config);

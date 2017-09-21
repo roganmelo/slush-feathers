@@ -1,6 +1,6 @@
-const knex = require('knex');
+import knex from 'knex';
 
-module.exports = function() {
+export default function() {
   const app = this;
   const { client, connection } = app.get('<%= database %>');
   const db = knex({ client, connection });

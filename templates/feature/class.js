@@ -34,5 +34,5 @@ class Service {
   }
 }
 
-module.exports = options => new Service(options);
-module.exports.Service = Service;
+export default options => new Service(options);
+export { Service };

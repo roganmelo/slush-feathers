@@ -1,8 +1,8 @@
-const createService = require('feathers-mongodb');
-const hooks = require('./<%= kebabName %>.hooks');
-const filters = require('./<%= kebabName %>.filters');
+import createService from 'feathers-mongodb';
+import hooks from './<%= kebabName %>.hooks';
+import filters from './<%= kebabName %>.filters';
 
-module.exports = function() {
+export default function() {
   const app = this;
   const paginate = app.get('paginate');
   const mongoClient = app.get('mongoClient');

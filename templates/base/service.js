@@ -1,9 +1,9 @@
-const createService = require('<%= createService %>');
-const createModel   = require('./<%= kebabName %>.model');
-const hooks         = require('./<%= kebabName %>.hooks');
-const filters       = require('./<%= kebabName %>.filters');
+import createService from '<%= createService %>';
+import createModel   from './<%= kebabName %>.model';
+import hooks         from './<%= kebabName %>.hooks';
+import filters       from './<%= kebabName %>.filters';
 
-module.exports = function() {
+export default function() {
   const app = this;
   const Model = createModel(app);
   const paginate = app.get('paginate');
@@ -15,7 +15,7 @@ module.exports = function() {
   };
 
   app.use('/<%= path %>', createService(options));
-
+  
   const service = app.service('<%= path %>');
 
   service.hooks(hooks);

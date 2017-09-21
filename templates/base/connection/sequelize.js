@@ -1,6 +1,6 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
-module.exports = function() {
+export default function() {
   const app = this;
   const connectionString = app.get('<%= database %>');
   const sequelize = new Sequelize(connectionString, {

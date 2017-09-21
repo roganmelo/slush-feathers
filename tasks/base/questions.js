@@ -1,4 +1,5 @@
 const { kebabCase } = require('lodash');
+
 const { adapters } = require('./utils');
 
 module.exports = [{

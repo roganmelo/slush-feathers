@@ -1,4 +1,4 @@
-module.exports = function(app) {
+export default function(app) {
   const mongooseClient = app.get('mongooseClient');
   const <%= camelName %> = new mongooseClient.Schema({
     text:      { type: String, required: true },

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-module.exports = function() {
+export default function() {
   const app = this;
 
   mongoose.connect(app.get('mongodb'));

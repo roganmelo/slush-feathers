@@ -1,9 +1,9 @@
-const handler = require('feathers-errors/handler');
-const notFound = require('feathers-errors/not-found');
+import handler from 'feathers-errors/handler';
+import notFound from 'feathers-errors/not-found';
 
-module.exports = function() {
+export default function() {
   const app = this;
 
   app.use(notFound());
   app.use(handler());
-};
+}
