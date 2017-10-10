@@ -8,7 +8,7 @@ export default function() {
   <% if(!extend) { %>const paginate = app.get('paginate');<% } %>
   
   const options = {
-    <% if(folder) { %>name: '<%= folder %>-<%= kebabName %>' <% } %><% if(!folder) { %>name: '<%= kebabName %>', <% } %>
+    <% if(folder) { %>name: '<%= folder %>-<%= kebabName %>', <% } %><% if(!folder) { %>name: '<%= kebabName %>', <% } %>
     <% if(extend) { %>extend: '<%= base %>'<% } %><% if(!extend) { %>paginate<% } %>
   };
 
@@ -17,4 +17,4 @@ export default function() {
   const service = app.service('<%= path %>');
 
   service.hooks(hooks);
-};
+}
